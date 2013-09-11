@@ -1,5 +1,0 @@
-My idea is to have fish that swim through water or roaches that scurry away depending on how the mouse moves.
-With the roaches the mouse would create a light or glow that would make them run. With the fish
-the mouse would create a shark or bigger fish that would make the fish swim away.  The user could
-drop bait or food for the roaches or fish to swarm to.  This may be too complex but I would like to 
-try to shoot for an idea that covers a similar concept of mouse interaction and objects reacting to it.
