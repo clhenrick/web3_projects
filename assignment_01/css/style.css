@@ -1,0 +1,69 @@
+#circle {
+	position:fixed;
+	top: 50%; left:50%;
+	height: 40px; width: 40px;
+	transition-property: height, width, top, left, background;
+	transition-duration: 3s;
+	border-radius:50%;
+	margin: -20px, 0, 0, -20px;
+	background: rgba(0,0,0,0.1);
+}
+
+/*
+#circle:hover{
+	height: 300px;
+	width: 300px;
+	background: #10ff00;
+}
+*/
+
+#square {
+	position: relative;
+	top: 25%; left:25%;
+	margin: 20px;
+	height: 100px; width: 100px;
+	background: #00e5ff;
+	transition-property: height, width, background;
+	transition-duration: 3s, 3s, 3s;
+}
+
+/*
+#square:hover{
+	height: 500px;
+	width: 10px;
+	background: #ffaf60;
+}
+*/
+
+
+/* when the screen's height is 300px or less */
+@media only screen and (max-height: 300px) {
+	#square:hover{
+		height: 10px;
+		width: 500px;
+		background: #ffaf60;
+	}
+
+	#circle:hover{
+	height: 200px;
+	width: 200px;
+	top: 75%; left: 25%;
+	background: #10ff00;
+	}
+}
+
+/* when the screen's width is 500px or less */
+@media only screen and (max-width: 500px){
+	#square:hover{
+	height: 500px;
+	width: 10px;
+	background: #ffaf60;
+	}
+
+	#circle:hover{
+	height: 300px;
+	width: 300px;
+	top: 75%; left: 25%;
+	background: #10ff00;
+	}
+}
