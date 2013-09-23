@@ -57,6 +57,7 @@ function makeColor(h,s,b) {
 var shape = document.getElementsByTagName("div");
 
 // on click change the shape's color using the HSVtoRGB()
+/**** currently returning a NaN error for the newColor function call :/ ****/
 for (i=0; i < shape.length; i++){
     console.log(shape[i]);
     // on click do some cool stuff
