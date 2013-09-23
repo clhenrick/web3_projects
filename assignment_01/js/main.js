@@ -3,7 +3,7 @@
  */
 
 
-// Matt's HSV converter
+// HSV to RGB color converter
  function HSVtoRGB(h, s, br) {
     var r, g, b, i, f, p, q, t;
     if (h && s === undefined && br === undefined) {
@@ -30,10 +30,55 @@
 }
 
 
- var circle = document.getElementById('circle');
-
- function randomSize() {
- 	var m = Math.floor(Math.round()*100);
- 	return m + '%';
+// Generate random values for HSV input
+ function randomH() {
+ 	var m = Math.random()*1;
+ 	return m;
  }
 
+  function randomS() {
+    var m = Math.random()*1;
+    return m;
+ }
+
+ function randomBr() {
+    var m = Math.random()*1;
+    return m;
+ }
+
+function makeColor(h,s,b) {
+    var rgb = HSVtoRGB(h,s,b);
+    var rgbCSS = 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b +  ', 0.3' + ')';
+    return rgbCSS;
+}
+
+
+// store shape divs in a variable
+var shape = document.getElementsByTagName("div");
+
+// on click change the shape's color using the HSVtoRGB()
+for (i=0; i < shape.length; i++){
+    console.log(shape[i]);
+    // on click do some cool stuff
+    shape[i].onclick = function(){
+        console.log("clicked");
+
+        newColor = makeColor(randomH, randomS, randomBr)
+
+        this.style.background=newColor;
+
+        // test
+        console.log(this.style.background=newColor)
+    }
+
+}
+
+
+
+// use jquery method of grabbing width and height of elements
+cWidth = $( "#circle").width();
+
+rWidth = $("#square").width();
+rHeight = $("#square").height();
+
+console.log( "Circle diameter: " + cWidth + ", Square width: " + rWidth + " Square height: " + rHeight);
