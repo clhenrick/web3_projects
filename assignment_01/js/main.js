@@ -64,7 +64,8 @@ for (i=0; i < shape.length; i++){
     shape[i].onclick = function(){
         console.log("clicked");
 
-        newColor = makeColor(randomH(), randomS(), randomBr())
+        // making the brightness 100 each time keeps the colors looking fresher :)
+        newColor = makeColor(randomH(), randomS(), 1)
 
         this.style.background=newColor;
 
