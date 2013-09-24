@@ -3,7 +3,10 @@
  */
 
 
-// HSV to RGB color converter
+/* HSV to RGB color converter
+/* @credits: https://github.com/xmatthewx/HSV-to-RGB
+/*           http://stackoverflow.com/questions/17242144/javascript-convert-hsb-hsv-color-to-rgb-accurately/17243070#17243070
+*/
  function HSVtoRGB(h, s, br) {
     var r, g, b, i, f, p, q, t;
     if (h && s === undefined && br === undefined) {
