@@ -64,7 +64,7 @@ for (i=0; i < shape.length; i++){
     shape[i].onclick = function(){
         console.log("clicked");
 
-        newColor = makeColor(randomH, randomS, randomBr)
+        newColor = makeColor(randomH(), randomS(), randomBr())
 
         this.style.background=newColor;
 
