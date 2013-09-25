@@ -40,13 +40,14 @@
  }
 
   function randomS() {
-    var m = Math.random()*1;
-    return m;
+    // keeps colors from getting too light!
+    // return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (1 - 0.6 + 1)) + 0.6;
  }
 
+
  function randomBr() {
-    var m = Math.random()*1;
-    return m;
+    return Math.floor(Math.random() * (1 - 0.8 + 1)) + 0.8
  }
 
 function makeColor(h,s,b) {
