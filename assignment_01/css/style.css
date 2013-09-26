@@ -21,6 +21,8 @@
 	background: rgba(0,0,0,0.1);
 	transition-property: height, width, top, left, border-radius, background;
 	transition-duration: 3s, 3s, 3s, 3s, 3s, 1s;
+	-webkit-transition: height, width, top, left, border-radius, background, 6s, 6s, 6s, 6s, 6s, 3s; /* Safari */
+
 }
 
 #square {
@@ -32,6 +34,7 @@
 	background: rgba(0,0,0,0.1);
 	transition-property: height, width, top, left, border-radius, background;
 	transition-duration: 3s, 3s, 3s, 3s, 3s, 1s;
+	-webkit-transition: height, width, top, left, border-radius, background, 6s, 6s, 6s, 6s, 6s, 3s; /* Safari */
 }
 
 #rect {
@@ -42,6 +45,7 @@
 	background: rgba(0,0,0,0.1);
 	transition-property: height, width, top, left, border-radius, background;
 	transition-duration: 3s, 3s, 3s, 3s, 3s, 1s;
+	-webkit-transition: height, width, top, left, border-radius, background, 6s, 6s, 6s, 6s, 6s, 3s; /* Safari */
 }
 
 #rectvert {
@@ -52,6 +56,7 @@
 	background: rgba(0,0,0,0.1);
 	transition-property: height, width, top, left, border-radius, background;
 	transition-duration: 3s, 3s, 3s, 3s, 3s, 1s;
+	-webkit-transition: height, width, top, left, border-radius, background, 6s, 6s, 6s, 6s, 6s, 3s; /* Safari */
 }
 
 #circle:hover{
