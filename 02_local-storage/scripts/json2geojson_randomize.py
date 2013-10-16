@@ -29,10 +29,11 @@ def scrambleGeo(input):
     attempting to scramble the lat and lon values...
     """
 
-    random1 = (1 - random.uniform(.001, .01))
-    random2 = (1 + random.uniform(.001, .01))
+    for feature in input['features']:
 
-    for feature in input['features']: 
+        random1 = (1 + random.uniform(-.001, .001))
+        random2 = (1 + random.uniform(-.001, .001))
+
         lon = feature['geometry']['coordinates'][0]
         lat = feature['geometry']['coordinates'][1]
 
