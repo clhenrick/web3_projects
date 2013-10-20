@@ -11,26 +11,28 @@ var map = L.map('map', {
 // create the map 
 map.addLayer(layer);
 
-
+// on each feature use feature data to create a pop-up
 function onEachFeature(feature, layer) {
-    var popupContent = feature.properties.t;
-    console.log(popupContent);
 
-    if (feature.properties && feature.properties.popupContent) {
-        popupContent += feature.properties.popupContent;
+
+    if (feature.properties) {
+        
+        var popupContent;
+        popupContent = feature.properties.t;
+
+        // create a new variable to store Date in
+        var time = new Date(0);
+        // create a date by passing it the Unix UTC epoch
+        time.setUTCSeconds(popupContent);
+
+        console.log(time);
+    
     }
 
     layer.bindPopup(popupContent);
 }
 
-/*
-.text(function(d){
-    return (new Date(d.t*1000)).toDateString(); //hella awesome! converts unix epoch time stamp to a human readable format
-})
-*/
-
-
-// grab the processed GeoJSON through ajax call
+// grab the processed GeoJSON through an ajax call
 var geojsonFeature = (function() {
         var json = null;
         $.ajax({
