@@ -1,3 +1,3 @@
-MAILTO=""
-23 * * * * /Users/chrislhenrick/parsons_classes/web3/web3_projects/02_local-storage/scripts/get_data.py
-2 * * * * /Users/chrislhenrick/parsons_classes/web3/web3_projects/02_local-storage/scripts/json2geojson_randomize.py
+MAILTO=chrishenrick@gmail.com
+23 * * * * /usr/bin/python /Users/chrislhenrick/parsons_classes/web3/web3_projects/02_local-storage/scripts/get_data.py 1> /Users/chrislhenrick/parsons_classes/web3/web3_projects/02_local-storage/data/test.json
+*/2 * * * * /usr/bin/python /Users/chrislhenrick/parsons_classes/web3/web3_projects/02_local-storage/scripts/json2geojson_randomize.py /Users/chrislhenrick/parsons_classes/web3/web3_projects/02_local-storage/data/test.json /Users/chrislhenrick/parsons_classes/web3/web3_projects/02_local-storage/data/test_random.json

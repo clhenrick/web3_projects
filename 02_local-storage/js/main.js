@@ -11,6 +11,25 @@ var map = L.map('map', {
 // create the map 
 map.addLayer(layer);
 
+
+function onEachFeature(feature, layer) {
+    var popupContent = feature.properties.t;
+    console.log(popupContent);
+
+    if (feature.properties && feature.properties.popupContent) {
+        popupContent += feature.properties.popupContent;
+    }
+
+    layer.bindPopup(popupContent);
+}
+
+/*
+.text(function(d){
+    return (new Date(d.t*1000)).toDateString(); //hella awesome! converts unix epoch time stamp to a human readable format
+})
+*/
+
+
 // grab the processed GeoJSON through ajax call
 var geojsonFeature = (function() {
         var json = null;
@@ -36,13 +55,24 @@ var geojsonMarkerOptions = {
     fillOpacity: 1
 };
 
+
 // load the geojson to the map
 // var myLayer = L.geoJson().addTo(map);
 // 	myLayer.addData(json);
 
 // load the geojson to the map with marker styling
 L.geoJson(geojsonFeature, {
+
+    style: function (feature) {
+        return feature.properties && feature.properties.style;
+    },
+
+    onEachFeature: onEachFeature,
+
 	pointToLayer: function (feature, latlng) {
 		return L.circleMarker(latlng, geojsonMarkerOptions)
 	}
 }).addTo(map);
+
+//L.circleMarker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
