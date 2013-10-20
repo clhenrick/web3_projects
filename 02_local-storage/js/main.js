@@ -58,10 +58,6 @@ var geojsonMarkerOptions = {
 };
 
 
-// load the geojson to the map
-// var myLayer = L.geoJson().addTo(map);
-// 	myLayer.addData(json);
-
 // load the geojson to the map with marker styling
 L.geoJson(geojsonFeature, {
 
@@ -75,6 +71,4 @@ L.geoJson(geojsonFeature, {
 		return L.circleMarker(latlng, geojsonMarkerOptions)
 	}
 }).addTo(map);
-
-//L.circleMarker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 
