@@ -5,7 +5,7 @@ var layer = new L.StamenTileLayer("toner");
 // initialize and set map center and zoom
 var map = L.map('map', {
 	center: new L.LatLng(40.67, -73.94),
-	zoom: 12
+	zoom: 11
 });
 
 // create the map 
@@ -13,26 +13,39 @@ map.addLayer(layer);
 
 // on each feature use feature data to create a pop-up
 function onEachFeature(feature, layer) {
-
-
-    if (feature.properties) {
         
-        var popupContent;
-        popupContent = feature.properties.t;
+    var popupContent;
+    popupContent = feature.properties.t;
 
-        // create a new variable to store Date in
-        var time = new Date(0);
-        // create a date by passing it the Unix UTC epoch
-        time.setUTCSeconds(popupContent);
+    // create a new variable to store Date in
+    var time = new Date(0);
+    // create a date by passing it the Unix UTC epoch
+    time.setUTCSeconds(popupContent);
 
-        console.log(time);
+    popupContent = time;
+
+    console.log(popupContent);
+    //return time;
     
-    }
-
     layer.bindPopup(popupContent);
 }
 
-// grab the processed GeoJSON through an ajax call
+// grab original GeoJSON
+var geojsonOriginal = (function() {
+    var json = null;
+    $.ajax({
+        'url': "/data/test_output.json",
+        'dataType': "json",
+        'jsonpCallback': 'getJson',
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+})();
+
+
+// grab the processed & scrambled GeoJSON through an ajax call
 var geojsonFeature = (function() {
         var json = null;
         $.ajax({
@@ -51,8 +64,8 @@ var geojsonFeature = (function() {
 var geojsonMarkerOptions = {
     radius: 10,
     fillColor: "rgb(255,0,195)",
-    color: "#000",
-    weight: 0,
+    color: "#fff",
+    weight: 2,
     opacity: 1,
     fillOpacity: 1
 };
@@ -67,8 +80,5 @@ L.geoJson(geojsonFeature, {
 
     onEachFeature: onEachFeature,
 
-	pointToLayer: function (feature, latlng) {
-		return L.circleMarker(latlng, geojsonMarkerOptions)
-	}
 }).addTo(map);
 
