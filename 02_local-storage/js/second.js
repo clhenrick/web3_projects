@@ -29,7 +29,9 @@ map.setView(config.initLatLng, config.initZoom);
 var myData = {
   scrambled: "data/test_random.json",
   original: "data/test_output.json",
-  myLayer: L.geoJson().addTo(map) // create new layer to store geojson
+  myLayer: L.geoJson().addTo(map), // create new layer to store geojson
+  polylinesTest: []
+
 }
 
 
@@ -66,21 +68,32 @@ function onEachFeature(feature, layer) {
 	                    ,popupOptions);
 }
 
-
+// NOT YET WORKING...
 // create line path features for marker animation
-function createLineFeatures(first_feature, second_feature) {
+// polyLines created from pairs of latlons that share matching 't' value
+function createLineFeatures(feature, feature_two) {
 
-  // create a for loop to grab the first features lat lon
-  for (i = 0, length = first_feature.length; i < length; i++){
-    console.log(feature.geometry.coordinates);
+      // create a for loop to grab the first features lat lon
+      for (i = 0, length = feature.features.length; i < length; i++){
 
-      var items = [];
-      $.each( json, function(key, val){
-        items.push
-      })
+        for (j = 0, length = feature_two.features.length; j < length; j++){ 
 
-  }
-}
+          var feature_t = feature.features[i].properties.t;
+          var feature_two_t = feature_two.features[j].properties.t;
+
+          // if the unix time is the same in both features
+          if (feature_t === feature_two_t) {
+
+            polyline = L.polyline([feature.features[i].geometry.coordinates, feature_two.features[j].geometry.coordinates])
+            polylinesTest.push(polyline);
+
+        } // end if
+      
+      } // end inner for loop
+  
+  } // end outer for loop
+
+} // end createLineFeatures
 
 
 // function to create geojson markers from data
@@ -88,10 +101,15 @@ function createMarkers(input_data) {
 
   // jquery ajax call to grab json data
   $.getJSON(input_data, function(json) {
-    myData.myLayer.addData(json);
+      myData.myLayer.addData(json);
+      //console.log(json.features);
+
   })
     .done(function (response) {
-            mobileGeo = L.geoJson(response, {
+
+            console.log(response);
+
+            newFeature = L.geoJson(response, {
 
                 style: function (feature) {
                     return {
@@ -104,21 +122,42 @@ function createMarkers(input_data) {
                 onEachFeature: onEachFeature,
 
             }).addTo(map);
+
         })
 
 }
 
-//myLayer.addData(geojsonFeature);
 
-var scrambledGeo = L.geoJson().addTo(map);
-var origGeo = L.geoJson().addTo(map);
+var scrambledGeo = createMarkers(myData.scrambled);
+var origGeo = createMarkers(myData.original);
 
-    scrambledGeo = createMarkers(myData.scrambled);
-    origGeo = createMarkers(myData.original);
-
-// createLineFeatures(scrambledGeo, origGeo);
-
-console.log(feature);
+console.log(scrambledGeo); // returns undefined, how to return json?
+console.log(myData.myLayer); // returns `e` (some deep level shit from the ajax call)
 
 
+/*********************************************************************
+ * create animated markers
+*********************************************************************/
 
+/* not yet working so commented out
+
+  $.each(mydata.polylinesTest, function(i, routeLine) {
+    var marker = L.animatedMarker(routeLine.getLatLngs(), {
+      icon: bikeIcon,
+      autoStart: false,
+      onEnd: function() {
+        $(this._shadow).fadeOut();
+        $(this._icon).fadeOut(3000, function(){
+          map.removeLayer(this);
+        });
+      }
+    });
+
+    map.addLayer(marker);
+
+    $(marker._icon).hide().fadeIn(1000, function(){
+      marker.start();
+    });
+
+
+*/
