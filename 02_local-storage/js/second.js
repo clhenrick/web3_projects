@@ -79,18 +79,18 @@ function createLineFeatures(feature, feature_two) {
       // create a for loop to grab the first features lat lon
       for (i = 0; i < feature.length; i++){
 
+        //console.log(feature[i].properties.t);
+
         for (j = 0; j < feature_two.length; j++){ 
 
-          //var feature_t = feature[i].properties.t;
-          //var feature_two_t = feature_two[j].properties.t;
-
-          //console.log('feature_t: ' + feature_t + 'feature_two_t: ' + feature_two_t);
+          //console.log(feature_two[j].properties.t);
+          console.log(feature_two[j].geometry.coordinates);
 
           // if the unix time is the same in both features
-          if (feature[i].properties.t == feature_two[j].properties.t) {
+          if (feature[i].properties.t === feature_two[j].properties.t) {
 
-          var polyline = L.polyline([feature.features[i].geometry.coordinates, feature_two.features[j].geometry.coordinates])
-          console.log(polyline);
+          var polyline = L.polyline([[feature[i].geometry.coordinates], [feature_two[j].geometry.coordinates]])
+          //console.log(polyline);
 
           myData.polylinesTest.push(polyline);
 
@@ -115,7 +115,7 @@ function createMarkers(input_data) {
 
     if (json.features[i].geometry.coordinates[0] == json.features[i].properties.lon){
 
-      console.log(json.features[i].geometry.coordinates);
+     // console.log(json.features[i].geometry.coordinates);
       newPoint = json.features[i];
       myData.dataOrig.push(newPoint);
 
@@ -126,7 +126,7 @@ function createMarkers(input_data) {
 
     if (json.features[i].geometry.coordinates[0] != json.features[i].properties.lon){
 
-      console.log(json.features[i].geometry.coordinates);
+      //console.log(json.features[i].geometry.coordinates);
       newPoint = json.features[i];
       myData.dataNew.push(newPoint);
 
@@ -136,7 +136,7 @@ function createMarkers(input_data) {
   })
     .done(function (response) {
 
-            console.log(response);
+            //console.log(response);
 
             newFeature = L.geoJson(response, {
 
@@ -159,16 +159,19 @@ function createMarkers(input_data) {
 var scrambledGeo = createMarkers(myData.scrambled);
 var origGeo = createMarkers(myData.original);
 
+setTimeout(function() {
+  createLineFeatures(myData.dataOrig, myData.dataNew)
+}, 2000);
 
 /*********************************************************************
  * create animated markers
 *********************************************************************/
 
-/* not yet working so commented out
+// not yet working
 
   $.each(myData.polylinesTest, function(i, routeLine) {
     var marker = L.animatedMarker(routeLine.getLatLngs(), {
-      icon: bikeIcon,
+      //icon: bikeIcon,
       autoStart: false,
       onEnd: function() {
         $(this._shadow).fadeOut();
@@ -183,6 +186,4 @@ var origGeo = createMarkers(myData.original);
     $(marker._icon).hide().fadeIn(1000, function(){
       marker.start();
     });
-
-
-*/
+  });
