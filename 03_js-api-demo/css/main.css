@@ -1,0 +1,103 @@
+html, body {
+    background: white;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+section { margin:2em 20px 4em; }
+
+li { 
+    margin-bottom:2px; 
+    display:block;
+}
+    
+/*span { 
+    display:block;
+    margin:0 10px;
+    padding:0 5px;
+    height:1em;
+    background:#afe;
+}
+    span:hover { 
+        cursor:pointer; 
+        }
+    
+    span.active {
+        background:#f0f;
+    }*/
+
+#container {
+    width: 100%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+h1 {
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    font-size: 1.8em;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.tilde {
+    position: relative;
+    top: .5em;
+}
+
+.button-holder{ text-align: center; }
+
+#startajax {
+    top: 50%;
+    left: 50%;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    position: relative;
+    display: block;
+}
+
+li {
+    position: relative;
+    display: inline;
+    float: left;
+    padding: 2%;
+}
+
+li p.title {
+    text-align: left;
+    font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+li p#desc {
+    text-align: left;
+    font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+    font-size: 1em;
+    font-style: italic;
+    width: 100%;
+}
+
+#footer {
+    clear: both;
+    text-align: center;
+    font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+    font-size: .8em;
+
+}
+
+#footer a:link {
+    text-decoration: none;
+    font-style: italic;
+}
+
+#footer a:visited {
+    text-decoration: none;
+    font-style: italic;
+}
