@@ -8,6 +8,10 @@ Currently testing this idea by using the [openpaths.cc](https://openpaths.cc/) A
 ###To Do:
 * debug leaflet js to create pop-ups for the GeoJSON markers.
 
-* Create a GUI that lets the user "unlock" their real data to see where they actually have been by entering a keycode.
-
 * Create an animation effect in Leaflet where orginial data points transition to scrambled data points or vice versa.
+
+* add more GUI elements.
+  eg: how scrambled data could be used by facebook / twitter / flickr,
+      lets the user "unlock" their real data to see where they actually have been by entering a keycode.
+
+* look into OpenSignals App.
