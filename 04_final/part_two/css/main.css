@@ -1,0 +1,42 @@
+body,html {
+    width: 100%;    
+    background: #000;
+}
+
+.container {
+    width: 33%;
+    float: left;
+    height: 100%;
+}
+
+.container h1 {
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#results {
+    border: 1px solid red;
+}
+
+#results2 {
+    border: 1px solid blue;
+}
+
+#intersect {
+    border: 1px solid white;
+}
+
+.feeling {
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.feeling p {
+    color: #fff;
+}

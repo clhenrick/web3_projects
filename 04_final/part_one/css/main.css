@@ -1,0 +1,40 @@
+html, body {
+    width: 100%;
+    margin: auto;
+}
+
+
+section {
+    width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.container {
+    float: left;
+    margin: auto;
+}
+
+#results {
+    width: 69%;
+    border: 1px solid blue;
+}
+
+#results2 {
+    width: 30%;
+    border: 1px solid green;
+}
+
+.listing {
+    clear: both;
+    display: inline-block;
+    position: relative;
+    padding: 0px;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.listing p {
+    color: hsla(0, 0%, 100%, 1);
+    text-align: center;
+}
